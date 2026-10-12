@@ -73,9 +73,11 @@ dataset/HCP/
 data/vc_masks.npy                                               # visual-cortex ROI mask
 ```
 
-**Bundled data.** This repo ships the CLIP targets for all four movies under `dataset/HCP/preprocessed_stimulis/`. The demo config `options/HTD_RNN.yaml` is set up for a single subject — point `fmri_data_path` to activation maps preprocessed with [cortex_image](https://github.com/cnwangy/cortex_image) to run the full flow end-to-end.
+**Bundled data.** This repo ships the CLIP targets for all four movies under `dataset/HCP/preprocessed_stimulis/`.
 
-**Full dataset.** The complete 175-subject activation maps are not shipped with this repository, but are available **on demand** — please contact the authors to request access.
+**Example preprocessed data.** The example activation maps used by the demo config `options/HTD_RNN.yaml` (one subject, all four movies) are not included in this repository; download them from [this Dropbox folder](https://www.dropbox.com/scl/fo/fgg6nuf3wv7jynkdqit73/AIhdqUFv-M_MRTzNCWL04Vg?rlkey=uxym8t7bmurefkrlgmwbz2gqa&st=ict80krd&dl=0) and place them under `dataset/HCP/preprocessed_data/<subject_id>/`, then point `fmri_data_path` to that folder to run the flow end-to-end.
+
+**Full dataset.** The complete 175-subject activation maps are not shipped with this repository, but are available **on demand** — please contact the authors to request access. Preprocessing can be reproduced with [cortex_image](https://github.com/cnwangy/cortex_image).
 
 > **Before running on your own machine, update the absolute paths** in `options/HTD_RNN.yaml` (`default_root_dir`, `fmri_data_path`), in `data/HCP_Datasets.py` (the `feature`/`mask` paths) to match your local layout.
 
