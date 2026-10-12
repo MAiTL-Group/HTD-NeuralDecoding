@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Experiment outputs (logs, tensorboard events, checkpoints)
+results/
+materials/
+*.ckpt
+*.pt
+
+# Demo fMRI activation maps (too large for Git; available on demand)
+dataset/HCP/preprocessed_data/

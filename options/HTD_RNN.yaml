@@ -1,0 +1,46 @@
+exp_name: HTD_RNN
+default_root_dir: /opt/data/private/projects/workspaces/NeuralDecoding/HTD_src
+
+seed: 0
+
+#training
+batch_size: 300  #per GPU
+num_workers: 8  #8
+max_epoch: 1000
+gpu_num: 1
+loss_type: SoftCLIPLoss #'BiMixCo_SoftCLIP' 'CLIPLoss'
+
+#network
+network: BrainNetwork_mindeye_2d_fuse
+n_times: 5
+fuse_method: rnn_last
+normalization: ln
+activation: gelu
+projection: none
+
+#dataset
+dataset_type: HCP
+fmri_type: concat5s #mix5s,after4s,current
+img_type: all_clip_embed
+
+fmri_data_path: /opt/data/private/projects/workspaces/NeuralDecoding/experiments/preprocessed_data
+train_data_list: ${default_root_dir}/lists/train.txt
+train_subjs: ["100610_Subj1"]
+
+val_data_list: ${default_root_dir}/lists/test_seen.txt
+val_subjs: ["100610_Subj1"]
+
+#optimizer
+optimizer: AdamW
+lr: 1e-4
+lr_scheduler: OneCycleLR
+weight_decay: 1e-4
+
+#save load
+check_val_every_n_epoch: 100
+save_every_n_epochs: 200
+ckpt_path: ~
+
+model_path: ${default_root_dir}/results/${exp_name}/tb_logger/version_0/checkpoints/epoch=999.ckpt
+test_data_list: ${default_root_dir}/lists/train.txt
+test_subjs: ["100610_Subj1"]
